@@ -13,7 +13,7 @@ export const pagePreviewStories: PagePreviewEntry[] = [
     variants: [
       {
         id: "create-artist",
-        label: "devPageGallery.variants.createIdle",
+        label: "Create idle",
         state: {
           zustand: [
             {
@@ -30,10 +30,10 @@ export const pagePreviewStories: PagePreviewEntry[] = [
           ],
         },
       },
-      { id: "create-idle", label: "devPageGallery.variants.createIdle" },
+      { id: "create-idle", label: "Create idle" },
       {
         id: "create-email-sent",
-        label: "devPageGallery.variants.createEmailSent",
+        label: "Create email sent",
       },
     ],
   },
