@@ -10,6 +10,7 @@ const requireFromPackage = createRequire(path.join(packageRoot, "package.json"))
 
 const args = process.argv.slice(2);
 const command = args[0] ?? "dev";
+const projectRoot = process.cwd();
 
 const getOption = (name) => {
   const idx = args.findIndex((arg) => arg === `--${name}`);
@@ -19,8 +20,9 @@ const getOption = (name) => {
 
 const storiesPath = getOption("stories");
 if (storiesPath) {
-  process.env.PAGE_PREVIEW_STORIES_PATH = path.resolve(process.cwd(), storiesPath);
+  process.env.PAGE_PREVIEW_STORIES_PATH = path.resolve(projectRoot, storiesPath);
 }
+process.env.PAGE_PREVIEW_PROJECT_ROOT = projectRoot;
 
 const nodeBin = process.execPath;
 const vitePackageRoot = path.dirname(requireFromPackage.resolve("vite/package.json"));

@@ -14,19 +14,33 @@ Component story tools are great for isolated UI, but they do not always cover re
 pnpm add -D page-preview-lab
 ```
 
-## Quick Start
+## Zero-config discovery (`*.preview.ts`)
 
-1. Create a stories file in your app (example: `next/dev/page-preview-stories.ts`)
-2. Define page entries + variants.
-3. Run preview runtime.
+By default, `page-preview-lab` scans your project root and automatically merges every `*.preview.ts` file.
+
+You can run without any stories argument:
 
 ```bash
-page-preview dev --stories next/dev/page-preview-stories.ts
+page-preview dev
 ```
 
-Open `http://127.0.0.1:4100`.
+This means in app projects you can keep only one script:
 
-## Story Format
+```json
+{
+  "scripts": {
+    "page-preview": "pnpm exec page-preview dev"
+  }
+}
+```
+
+Then run:
+
+```bash
+pnpm page-preview
+```
+
+## Story file format
 
 ```ts
 import type { PagePreviewEntry } from "page-preview-lab/lib";
@@ -36,6 +50,8 @@ export const pagePreviewStories: PagePreviewEntry[] = [
     id: "create-artist",
     group: "Sign in",
     name: "Create artist",
+    title: "Create artist",
+    description: "Artist onboarding states",
     target: {
       path: "/sign-up",
       variantQueryKey: "preview",
@@ -44,25 +60,80 @@ export const pagePreviewStories: PagePreviewEntry[] = [
     variants: [
       {
         id: "create-artist",
-        label: "devPageGallery.variants.createIdle",
+        label: "Artist selected",
         state: {
           zustand: [{ storeId: "signup", state: { step: "instagram" } }],
           reactQuery: [{ queryKey: ["seed"], data: { ok: true } }],
         },
       },
-      { id: "create-idle", label: "devPageGallery.variants.createIdle" },
+      { id: "create-idle", label: "Idle" },
     ],
   },
 ];
 ```
 
+## State plugin injection (Zustand / Redux / Context / React Query)
+
+Use `createPreviewBridge` from the library and register your state containers once.
+
+### 1) Create bridge instance
+
+```ts
+import { createPreviewBridge } from "page-preview-lab/lib";
+
+export const previewBridge = createPreviewBridge({
+  queryKey: "__pp", // default
+  developmentOnly: true, // default
+});
+```
+
+### 2) Register stores/clients
+
+```ts
+import { queryClient } from "@/lib/gql/query-client";
+import { useSignUpStore } from "@/screens/auth/sign-up/sign-up-store";
+import { previewBridge } from "./preview-bridge";
+
+previewBridge.registerZustandStore("signup", useSignUpStore as unknown as { setState: (state: Record<string, unknown>) => void });
+previewBridge.registerReactQueryClient("app", queryClient);
+
+// Optional providers:
+// previewBridge.registerReduxStore("app", reduxStore);
+// previewBridge.registerContextSetter("my-context", setContextValue);
+```
+
+### 3) Apply snapshot from URL query once on app startup
+
+```ts
+import { previewBridge } from "@/dev/preview-bridge";
+
+if (typeof window !== "undefined") {
+  previewBridge.applyFromSearch(window.location.search);
+}
+```
+
+### 4) Emit state from stories
+
+`state` in each variant supports:
+
+- `zustand: [{ storeId, state }]`
+- `redux: [{ storeId, action }]`
+- `context: [{ contextId, value }]`
+- `reactQuery: [{ queryKey, data }]`
+
 ## Commands
 
 ```bash
-page-preview dev --stories path/to/page-preview-stories.ts
-page-preview build --stories path/to/page-preview-stories.ts
-page-preview preview --stories path/to/page-preview-stories.ts
+page-preview dev
+page-preview build
+page-preview preview
 page-preview e2e
+```
+
+Optional single-file mode (override auto discovery):
+
+```bash
+page-preview dev --stories next/dev/custom-stories.ts
 ```
 
 ## Examples
