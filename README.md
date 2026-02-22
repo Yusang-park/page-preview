@@ -118,7 +118,7 @@ previewBridge.registerReactQueryClient("app", queryClient);
 // previewBridge.registerContextSetter("my-context", setContextValue);
 ```
 
-Recommended place: a single module such as `next/dev/register-preview-project-adapters.ts` that is imported once from app bootstrap.
+Recommended place: a single module such as `src/dev/register-preview-project-adapters.ts` that is imported once from app bootstrap.
 
 ### 3) Apply snapshot from URL query once on app startup
 

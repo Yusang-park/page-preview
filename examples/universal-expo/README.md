@@ -8,16 +8,16 @@ pnpm add -D page-preview
 
 ## 2) Add stories
 
-Create `next/dev/page-preview-stories.ts` and define `pagePreviewStories`.
+Create `src/dev/sign-up.preview.ts` (or any `*.preview.ts`) and export `pagePreviewStories`.
 
 ## 3) Register state adapters
 
-Create `next/dev/register-preview-project-adapters.ts` and register your stores/clients.
+Create `src/dev/register-preview-project-adapters.ts` and register your stores/clients.
 
 ## 4) Run
 
 ```bash
-page-preview dev --stories next/dev/page-preview-stories.ts
+pnpm page-preview
 ```
 
 Then open `http://127.0.0.1:4100`.
