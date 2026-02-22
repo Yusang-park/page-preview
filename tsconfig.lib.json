@@ -1,0 +1,15 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "outDir": "dist/lib",
+    "rootDir": "src/lib",
+    "declaration": true,
+    "declarationMap": false,
+    "emitDeclarationOnly": false,
+    "module": "ESNext",
+    "target": "ES2022",
+    "moduleResolution": "Bundler",
+    "skipLibCheck": true
+  },
+  "include": ["src/lib/**/*.ts"]
+}
