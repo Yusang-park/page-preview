@@ -70,16 +70,6 @@ page-preview e2e
 
 See `examples/universal-expo`.
 
-## Publish (GitHub Actions)
-
-Publishing runs when you push a `v*` tag or trigger the workflow manually.
-
-Required repo secret:
-- `NPM_TOKEN`
-
-Workflow file:
-- `.github/workflows/publish.yml`
-
 ## Local Development
 
 ```bash
