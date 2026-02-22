@@ -1,1 +1,1 @@
-export { pagePreviewStories } from "./default";
+export { pagePreviewStories } from "../../../../../../../next/dev/page-preview-stories";
