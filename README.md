@@ -155,4 +155,4 @@ if (typeof window !== "undefined") {
 
 ## Examples
 
-See `examples/universal-expo`.
+See `examples`.
