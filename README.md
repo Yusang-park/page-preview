@@ -72,7 +72,7 @@ See `examples/universal-expo`.
 
 ## Publish (GitHub Actions)
 
-`v*` 태그 푸시 또는 수동 실행 시 npm 배포됩니다.
+Publishing runs when you push a `v*` tag or trigger the workflow manually.
 
 Required repo secret:
 - `NPM_TOKEN`
