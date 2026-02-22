@@ -1,5 +1,5 @@
 {
-  "name": "@yusang/page-preview",
+  "name": "page-preview-lab",
   "version": "0.1.0",
   "description": "Storybook-like page preview runtime for full-page state scenarios",
   "type": "module",

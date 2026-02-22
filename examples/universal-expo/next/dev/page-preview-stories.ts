@@ -1,4 +1,4 @@
-import type { PagePreviewEntry } from "@yusang/page-preview/lib";
+import type { PagePreviewEntry } from "page-preview-lab/lib";
 
 export const pagePreviewStories: PagePreviewEntry[] = [
   {

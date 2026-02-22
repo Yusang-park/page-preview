@@ -1,4 +1,4 @@
-# @yusang/page-preview
+# page-preview-lab
 
 Storybook-like **page runtime preview** for full pages and hidden UI branches.
 
@@ -6,12 +6,12 @@ Storybook-like **page runtime preview** for full pages and hidden UI branches.
 
 ## Why
 
-Component story tools are great for isolated UI, but they do not always cover real page branching (auth gates, async states, seeded stores, deep paths). `@yusang/page-preview` runs a dedicated preview runtime on `:4100` and lets you define page variants as stories.
+Component story tools are great for isolated UI, but they do not always cover real page branching (auth gates, async states, seeded stores, deep paths). `page-preview-lab` runs a dedicated preview runtime on `:4100` and lets you define page variants as stories.
 
 ## Install
 
 ```bash
-pnpm add -D @yusang/page-preview
+pnpm add -D page-preview-lab
 ```
 
 ## Quick Start
@@ -29,7 +29,7 @@ Open `http://127.0.0.1:4100`.
 ## Story Format
 
 ```ts
-import type { PagePreviewEntry } from "@yusang/page-preview/lib";
+import type { PagePreviewEntry } from "page-preview-lab/lib";
 
 export const pagePreviewStories: PagePreviewEntry[] = [
   {

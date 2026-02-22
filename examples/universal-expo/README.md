@@ -3,7 +3,7 @@
 ## 1) Install
 
 ```bash
-pnpm add -D @yusang/page-preview
+pnpm add -D page-preview-lab
 ```
 
 ## 2) Add stories
