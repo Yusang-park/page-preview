@@ -34,8 +34,7 @@
   },
   "scripts": {
     "prepare:stories": "node ./scripts/prepare-stories.mjs",
-    "build:lib": "tsc -p tsconfig.lib.json",
-    "build": "pnpm run prepare:stories && pnpm run build:lib && vite build",
+    "build": "pnpm run prepare:stories && vite build",
     "dev": "pnpm run prepare:stories && vite --host 127.0.0.1 --port 4100 --strictPort",
     "preview": "pnpm run prepare:stories && vite preview --host 127.0.0.1 --port 4100 --strictPort",
     "e2e": "pnpm run prepare:stories && playwright test -c playwright.config.ts",
@@ -44,10 +43,7 @@
     "prepublishOnly": "pnpm run build"
   },
   "exports": {
-    "./lib": {
-      "types": "./dist/lib/index.d.ts",
-      "import": "./dist/lib/index.js"
-    }
+    "./lib": "./src/lib/index.ts"
   },
   "dependencies": {
     "@vitejs/plugin-react": "^5.0.4",
