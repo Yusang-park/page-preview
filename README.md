@@ -18,12 +18,6 @@ pnpm add -D page-preview
 
 By default, `page-preview` scans your project root and automatically merges every `*.preview.ts` file.
 
-You can run without any stories argument:
-
-```bash
-page-preview dev
-```
-
 This means in app projects you can keep only one script:
 
 ```json
@@ -158,21 +152,6 @@ if (typeof window !== "undefined") {
 2. Register preview-target stores/clients once.
 3. Call `applyFromSearch(window.location.search)` once at app startup.
 4. Use matching ids in `*.preview.ts`.
-
-## Commands
-
-```bash
-page-preview dev
-page-preview build
-page-preview preview
-page-preview e2e
-```
-
-Optional single-file mode (override auto discovery):
-
-```bash
-page-preview dev --stories next/dev/custom-stories.ts
-```
 
 ## Examples
 
