@@ -1,4 +1,4 @@
-# page-preview-lab
+# page-preview
 
 Storybook-like **page runtime preview** for full pages and hidden UI branches.
 
@@ -6,17 +6,17 @@ Storybook-like **page runtime preview** for full pages and hidden UI branches.
 
 ## Why
 
-Component story tools are great for isolated UI, but they do not always cover real page branching (auth gates, async states, seeded stores, deep paths). `page-preview-lab` runs a dedicated preview runtime on `:4100` and lets you define page variants as stories.
+Component story tools are great for isolated UI, but they do not always cover real page branching (auth gates, async states, seeded stores, deep paths). `page-preview` runs a dedicated preview runtime on `:4100` and lets you define page variants as stories.
 
 ## Install
 
 ```bash
-pnpm add -D page-preview-lab
+pnpm add -D page-preview
 ```
 
 ## Zero-config discovery (`*.preview.ts`)
 
-By default, `page-preview-lab` scans your project root and automatically merges every `*.preview.ts` file.
+By default, `page-preview` scans your project root and automatically merges every `*.preview.ts` file.
 
 You can run without any stories argument:
 
@@ -43,7 +43,7 @@ pnpm page-preview
 ## Story file format
 
 ```ts
-import type { PagePreviewEntry } from "page-preview-lab/lib";
+import type { PagePreviewEntry } from "page-preview/lib";
 
 export const pagePreviewStories: PagePreviewEntry[] = [
   {
@@ -79,7 +79,7 @@ Use `createPreviewBridge` from the library and register your state containers on
 ### 1) Create bridge instance
 
 ```ts
-import { createPreviewBridge } from "page-preview-lab/lib";
+import { createPreviewBridge } from "page-preview/lib";
 
 export const previewBridge = createPreviewBridge({
   queryKey: "__pp", // default
@@ -140,10 +140,3 @@ page-preview dev --stories next/dev/custom-stories.ts
 
 See `examples/universal-expo`.
 
-## Local Development
-
-```bash
-pnpm install
-pnpm dev
-pnpm e2e
-```

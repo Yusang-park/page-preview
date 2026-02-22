@@ -1,4 +1,4 @@
-import type { PagePreviewEntry } from "page-preview-lab/lib";
+import type { PagePreviewEntry } from "page-preview/lib";
 
 export const pagePreviewStories: PagePreviewEntry[] = [
   {
