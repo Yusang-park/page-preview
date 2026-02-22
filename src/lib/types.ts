@@ -1,6 +1,6 @@
 export type PagePreviewVariant = {
   id: string;
-  labelKey: string;
+  label?: string;
   state?: PreviewStateSnapshot;
 };
 
@@ -15,8 +15,8 @@ export type PagePreviewEntry = {
   id: string;
   group?: string;
   name?: string;
-  titleKey: string;
-  descriptionKey?: string;
+  title?: string;
+  description?: string;
   target: PagePreviewTarget;
   variants: PagePreviewVariant[];
 };

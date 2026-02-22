@@ -1,14 +1,14 @@
 {
   "name": "page-preview-lab",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Storybook-like page preview runtime for full-page state scenarios",
   "type": "module",
   "license": "MIT",
   "author": "Yusang Park",
-  "homepage": "https://github.com/Yusang-park/page-preview#readme",
+  "homepage": "https://github.com/Yusang-park/page-preview-lab#readme",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Yusang-park/page-preview.git"
+    "url": "git+https://github.com/Yusang-park/page-preview-lab.git"
   },
   "keywords": [
     "preview",

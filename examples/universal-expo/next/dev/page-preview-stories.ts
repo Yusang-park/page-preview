@@ -5,8 +5,6 @@ export const pagePreviewStories: PagePreviewEntry[] = [
     id: "create-artist",
     group: "Sign in",
     name: "Create artist",
-    titleKey: "devPageGallery.pages.signup.title",
-    descriptionKey: "devPageGallery.pages.signup.description",
     target: {
       path: "/sign-up",
       variantQueryKey: "preview",
@@ -15,7 +13,7 @@ export const pagePreviewStories: PagePreviewEntry[] = [
     variants: [
       {
         id: "create-artist",
-        labelKey: "devPageGallery.variants.createIdle",
+        label: "devPageGallery.variants.createIdle",
         state: {
           zustand: [
             {
@@ -32,10 +30,10 @@ export const pagePreviewStories: PagePreviewEntry[] = [
           ],
         },
       },
-      { id: "create-idle", labelKey: "devPageGallery.variants.createIdle" },
+      { id: "create-idle", label: "devPageGallery.variants.createIdle" },
       {
         id: "create-email-sent",
-        labelKey: "devPageGallery.variants.createEmailSent",
+        label: "devPageGallery.variants.createEmailSent",
       },
     ],
   },

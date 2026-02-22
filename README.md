@@ -36,7 +36,6 @@ export const pagePreviewStories: PagePreviewEntry[] = [
     id: "create-artist",
     group: "Sign in",
     name: "Create artist",
-    titleKey: "devPageGallery.pages.signup.title",
     target: {
       path: "/sign-up",
       variantQueryKey: "preview",
@@ -45,13 +44,13 @@ export const pagePreviewStories: PagePreviewEntry[] = [
     variants: [
       {
         id: "create-artist",
-        labelKey: "devPageGallery.variants.createIdle",
+        label: "devPageGallery.variants.createIdle",
         state: {
           zustand: [{ storeId: "signup", state: { step: "instagram" } }],
           reactQuery: [{ queryKey: ["seed"], data: { ok: true } }],
         },
       },
-      { id: "create-idle", labelKey: "devPageGallery.variants.createIdle" },
+      { id: "create-idle", label: "devPageGallery.variants.createIdle" },
     ],
   },
 ];
