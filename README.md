@@ -74,7 +74,29 @@ export const pagePreviewStories: PagePreviewEntry[] = [
 
 ## State plugin injection (Zustand / Redux / Context / React Query)
 
-Use `createPreviewBridge` from the library and register your state containers once.
+Use `createPreviewBridge` from the library and register your state containers.
+
+### Core rule: register once per container
+
+- Register each target store/client **once** during app startup.
+- You do **not** need to register on every page or every variant.
+- Register only containers you want to control from preview states.
+
+### Core rule: `storeId` must match
+
+If your variant contains:
+
+```ts
+zustand: [{ storeId: "signup", state: { step: "role" } }];
+```
+
+You must register a Zustand store with the same id:
+
+```ts
+previewBridge.registerZustandStore("signup", useSignUpStore);
+```
+
+If ids do not match, that state block is ignored.
 
 ### 1) Create bridge instance
 
@@ -94,13 +116,15 @@ import { queryClient } from "@/lib/gql/query-client";
 import { useSignUpStore } from "@/screens/auth/sign-up/sign-up-store";
 import { previewBridge } from "./preview-bridge";
 
-previewBridge.registerZustandStore("signup", useSignUpStore as unknown as { setState: (state: Record<string, unknown>) => void });
+previewBridge.registerZustandStore("signup", useSignUpStore);
 previewBridge.registerReactQueryClient("app", queryClient);
 
 // Optional providers:
 // previewBridge.registerReduxStore("app", reduxStore);
 // previewBridge.registerContextSetter("my-context", setContextValue);
 ```
+
+Recommended place: a single module such as `next/dev/register-preview-project-adapters.ts` that is imported once from app bootstrap.
 
 ### 3) Apply snapshot from URL query once on app startup
 
@@ -121,6 +145,20 @@ if (typeof window !== "undefined") {
 - `context: [{ contextId, value }]`
 - `reactQuery: [{ queryKey, data }]`
 
+### Container mapping summary
+
+- Zustand: `registerZustandStore("<id>", store)` ⇄ `state.zustand[].storeId`
+- Redux: `registerReduxStore("<id>", store)` ⇄ `state.redux[].storeId`
+- Context: `registerContextSetter("<id>", setter)` ⇄ `state.context[].contextId`
+- React Query: any registered query client receives `state.reactQuery[]` via `setQueryData`
+
+### Minimal wiring checklist
+
+1. Create one bridge instance.
+2. Register preview-target stores/clients once.
+3. Call `applyFromSearch(window.location.search)` once at app startup.
+4. Use matching ids in `*.preview.ts`.
+
 ## Commands
 
 ```bash
@@ -139,4 +177,3 @@ page-preview dev --stories next/dev/custom-stories.ts
 ## Examples
 
 See `examples/universal-expo`.
-
