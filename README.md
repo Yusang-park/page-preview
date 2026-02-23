@@ -176,6 +176,31 @@ if (isPreview) {
 
 `isPreview` is `true` when the URL contains `preview` or `__pp` query parameters (which page-preview always appends to iframe URLs).
 
+## `usePreviewState` — preview-aware `useState`
+
+Drop-in replacement for React's `useState` that reads its initial value from preview variant state when running inside a page-preview iframe. In normal mode, it behaves exactly like `useState`.
+
+```ts
+import { usePreviewState } from "page-preview/lib";
+
+// Normal mode: useState(0)
+// Preview mode: reads from variant state.vars.currentStep
+const [currentStep, setCurrentStep] = usePreviewState("currentStep", 0);
+```
+
+In your story file, use `state.vars` to set the initial value:
+
+```ts
+variants: [
+  { id: "artists", label: "Artists", state: { vars: { currentStep: 0 } } },
+  { id: "platforms", label: "Platforms", state: { vars: { currentStep: 1 } } },
+  { id: "countries", label: "Countries", state: { vars: { currentStep: 2 } } },
+  { id: "labels", label: "Labels", state: { vars: { currentStep: 3 } } },
+]
+```
+
+This keeps page components free of preview-specific logic — just swap `useState` for `usePreviewState`.
+
 ## Examples
 
 See `examples`.

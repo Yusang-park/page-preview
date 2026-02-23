@@ -46,4 +46,5 @@ export type PreviewStateSnapshot = {
   redux?: ReduxInjection[];
   context?: ContextInjection[];
   reactQuery?: ReactQueryInjection[];
+  vars?: Record<string, unknown>;
 };
