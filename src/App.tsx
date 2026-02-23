@@ -154,7 +154,7 @@ const PreviewGrid = () => {
                   <div className="pp-chip-row">
                     {entry.variants.map((v) => (
                       <a className="pp-chip" href={buildTargetUrl(entry, v.id)} key={v.id}>
-                        {v.id}
+                        {v.label}
                       </a>
                     ))}
                   </div>
@@ -220,12 +220,9 @@ const PageViewer = ({ entry }: { entry: PagePreviewEntry }) => {
               id={`variant-${v.id}`}
               className={`pp-preview-card ${v.id === highlightId ? "pp-preview-card-active" : ""}`}
             >
-              <ScaledPreviewFrame
-                title={`${entry.id}-${v.id}`}
-                src={buildTargetUrl(entry, v.id)}
-              />
+              <ScaledPreviewFrame title={`${entry.id}-${v.label}`} src={buildTargetUrl(entry, v.id)} />
               <div className="pp-preview-card-footer">
-                <h3 className="pp-preview-card-title">{v.id}</h3>
+                <h3 className="pp-preview-card-title">{v.label}</h3>
                 <a className="pp-open pp-preview-open-link" href={buildTargetUrl(entry, v.id)}>
                   Open page
                 </a>

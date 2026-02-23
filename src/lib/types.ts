@@ -1,6 +1,6 @@
 export type PagePreviewVariant = {
   id: string;
-  label?: string;
+  label: string;
   state?: PreviewStateSnapshot;
 };
 
