@@ -153,6 +153,29 @@ if (typeof window !== "undefined") {
 3. Call `applyFromSearch(window.location.search)` once at app startup.
 4. Use matching ids in `*.preview.ts`.
 
+## Isolated preview context (credentialless iframes)
+
+All preview iframes use the HTML `credentialless` attribute by default. This means each iframe loads in an **anonymous, cookie-free context** — equivalent to an incognito window.
+
+This solves a common pain point: previewing auth-gated pages (login, onboarding, sign-up flows) while already logged in. No per-story configuration needed.
+
+> **Browser support:** Chrome 110+. Other browsers will silently ignore the attribute and fall back to the normal (cookie-sharing) behavior.
+
+## `isPreview` — detect preview mode in your app
+
+Import `isPreview` to conditionally bypass auth guards, skip redirects, or disable side effects when the page is loaded inside a page-preview iframe.
+
+```ts
+import { isPreview } from "page-preview/lib";
+
+// Example: skip auth redirect in preview mode
+if (isPreview) {
+  // bypass ProtectedRoute, skip onboarding redirect, etc.
+}
+```
+
+`isPreview` is `true` when the URL contains `preview` or `__pp` query parameters (which page-preview always appends to iframe URLs).
+
 ## Examples
 
 See `examples`.

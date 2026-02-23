@@ -103,7 +103,14 @@ const ScaledPreviewFrame = ({
         className="pp-canvas-inner"
         style={{ transform: `translate(-50%, -50%) scale(${scale})` }}
       >
-        <iframe className="pp-viewer-frame" src={src} title={title} />
+        <iframe
+          className="pp-viewer-frame"
+          src={src}
+          title={title}
+          // @ts-expect-error -- credentialless is a valid HTML attribute (Chrome 110+)
+          // but not yet in React's type definitions
+          credentialless=""
+        />
       </div>
     </div>
   );
