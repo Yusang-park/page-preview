@@ -2,10 +2,7 @@
 
 Storybook-like **page runtime preview** for full pages and hidden UI branches.
 
-![Page Preview Gallery](./docs/screenshots/gallery.png)
-![Preview Screen 1](./docs/screenshots/preview-01.jpg)
-![Preview Screen 2](./docs/screenshots/preview-02.jpg)
-![Preview Screen 3](./docs/screenshots/preview-03.jpg)
+![Page Preview Demo](./docs/screenshots/gallery.png)
 
 ## Why
 
