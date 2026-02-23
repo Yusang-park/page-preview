@@ -1,6 +1,6 @@
 {
   "name": "page-preview",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "description": "Storybook-like page preview runtime for full-page state scenarios",
   "type": "module",
   "license": "MIT",
