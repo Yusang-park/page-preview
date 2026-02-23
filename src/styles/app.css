@@ -293,10 +293,12 @@ body {
 }
 
 .pp-viewer-toolbar {
-  position: sticky;
-  top: 0;
+  position: fixed;
+  bottom: 0;
+  left: 260px;
+  right: 0;
   z-index: 20;
-  border-bottom: 1px solid var(--border);
+  border-top: 1px solid var(--border);
   background: rgba(9, 9, 11, 0.85);
   backdrop-filter: blur(12px);
 }
@@ -362,6 +364,7 @@ body {
 .pp-viewer-shell {
   flex: 1;
   min-height: 0;
+  padding-bottom: 88px;
 }
 
 .pp-viewer-grid {
@@ -477,4 +480,5 @@ body {
   .pp-shell { padding: 16px 12px 24px; }
   .pp-viewer-top { padding: 12px; }
   .pp-viewer-title { text-align: left; }
+  .pp-viewer-toolbar { left: 0; }
 }

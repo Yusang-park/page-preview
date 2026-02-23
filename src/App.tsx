@@ -204,21 +204,6 @@ const PageViewer = ({ entry }: { entry: PagePreviewEntry }) => {
 
   return (
     <div className="pp-main pp-viewer-root">
-      <div className="pp-viewer-toolbar">
-        <div className="pp-viewer-top">
-          <div className="pp-viewer-back-wrap">
-            <Link className="pp-toolbar-back" to="/" aria-label="Back to gallery">
-              <BackIcon />
-            </Link>
-          </div>
-          <div className="pp-viewer-title">
-            <strong>{entry.group ?? "Preview"}</strong>
-            <span>{entry.name ?? entry.id}</span>
-          </div>
-          <div style={{ width: 40 }} /> {/* Spacer for centering title */}
-        </div>
-      </div>
-      
       <div className="pp-viewer-shell">
         <div className="pp-viewer-grid">
           {entry.variants.map((v) => (
@@ -236,6 +221,21 @@ const PageViewer = ({ entry }: { entry: PagePreviewEntry }) => {
               </div>
             </article>
           ))}
+        </div>
+      </div>
+
+      <div className="pp-viewer-toolbar">
+        <div className="pp-viewer-top">
+          <div className="pp-viewer-back-wrap">
+            <Link className="pp-toolbar-back" to="/" aria-label="Back to gallery">
+              <BackIcon />
+            </Link>
+          </div>
+          <div className="pp-viewer-title">
+            <strong>{entry.group ?? "Preview"}</strong>
+            <span>{entry.name ?? entry.id}</span>
+          </div>
+          <div style={{ width: 40 }} /> {/* Spacer for centering title */}
         </div>
       </div>
     </div>

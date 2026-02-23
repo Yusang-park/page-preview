@@ -1,0 +1,158 @@
+{
+  "version": "1.0.0",
+  "lastScanned": 1771834556613,
+  "projectRoot": "/Users/yusang/ChartmetricN/page-preview",
+  "techStack": {
+    "languages": [
+      {
+        "name": "JavaScript/TypeScript",
+        "version": null,
+        "confidence": "high",
+        "markers": [
+          "package.json"
+        ]
+      },
+      {
+        "name": "TypeScript",
+        "version": null,
+        "confidence": "high",
+        "markers": [
+          "tsconfig.json"
+        ]
+      }
+    ],
+    "frameworks": [
+      {
+        "name": "playwright",
+        "version": "1.58.2",
+        "category": "testing"
+      },
+      {
+        "name": "react",
+        "version": "19.1.0",
+        "category": "frontend"
+      },
+      {
+        "name": "react-dom",
+        "version": "19.1.0",
+        "category": "frontend"
+      },
+      {
+        "name": "vite",
+        "version": "7.1.7",
+        "category": "build"
+      }
+    ],
+    "packageManager": "pnpm",
+    "runtime": null
+  },
+  "build": {
+    "buildCommand": "pnpm build",
+    "testCommand": null,
+    "lintCommand": null,
+    "devCommand": "pnpm dev",
+    "scripts": {
+      "prepare:stories": "node ./scripts/prepare-stories.mjs",
+      "build": "pnpm run prepare:stories && vite build",
+      "dev": "pnpm run prepare:stories && vite --host 127.0.0.1 --port 4100 --strictPort",
+      "preview": "pnpm run prepare:stories && vite preview --host 127.0.0.1 --port 4100 --strictPort",
+      "e2e": "pnpm run prepare:stories && playwright test -c playwright.config.ts",
+      "e2e:headed": "pnpm run prepare:stories && playwright test -c playwright.config.ts --headed",
+      "e2e:ui": "pnpm run prepare:stories && playwright test -c playwright.config.ts --ui",
+      "prepublishOnly": "pnpm run build"
+    }
+  },
+  "conventions": {
+    "namingStyle": null,
+    "importStyle": null,
+    "testPattern": null,
+    "fileOrganization": null
+  },
+  "structure": {
+    "isMonorepo": false,
+    "workspaces": [],
+    "mainDirectories": [
+      "bin",
+      "docs",
+      "examples",
+      "scripts",
+      "src"
+    ],
+    "gitBranches": {
+      "defaultBranch": "main",
+      "branchingStrategy": null
+    }
+  },
+  "customNotes": [],
+  "directoryMap": {
+    "bin": {
+      "path": "bin",
+      "purpose": "Executable scripts",
+      "fileCount": 1,
+      "lastAccessed": 1771834556604,
+      "keyFiles": [
+        "page-preview.mjs"
+      ]
+    },
+    "docs": {
+      "path": "docs",
+      "purpose": "Documentation",
+      "fileCount": 0,
+      "lastAccessed": 1771834556604,
+      "keyFiles": []
+    },
+    "e2e": {
+      "path": "e2e",
+      "purpose": null,
+      "fileCount": 1,
+      "lastAccessed": 1771834556608,
+      "keyFiles": [
+        "page-gallery.spec.ts"
+      ]
+    },
+    "examples": {
+      "path": "examples",
+      "purpose": "Example code",
+      "fileCount": 4,
+      "lastAccessed": 1771834556608,
+      "keyFiles": [
+        "README.md",
+        "preview-bridge.ts",
+        "register-preview-project-adapters.ts",
+        "sign-up.preview.ts"
+      ]
+    },
+    "scripts": {
+      "path": "scripts",
+      "purpose": "Build/utility scripts",
+      "fileCount": 1,
+      "lastAccessed": 1771834556608,
+      "keyFiles": [
+        "prepare-stories.mjs"
+      ]
+    },
+    "src": {
+      "path": "src",
+      "purpose": "Source code",
+      "fileCount": 2,
+      "lastAccessed": 1771834556608,
+      "keyFiles": [
+        "App.tsx",
+        "main.tsx"
+      ]
+    },
+    "src/lib": {
+      "path": "src/lib",
+      "purpose": "Library code",
+      "fileCount": 6,
+      "lastAccessed": 1771834556608,
+      "keyFiles": [
+        "helpers.ts",
+        "index.ts",
+        "preview-bridge.ts"
+      ]
+    }
+  },
+  "hotPaths": [],
+  "userDirectives": []
+}
